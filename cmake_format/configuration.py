@@ -31,6 +31,10 @@ def parse_bool(string):
   return False
 
 
+def parse_as_list(string, sepr=":"):
+  return list(string.split(sepr))
+
+
 class ConfigObject(object):
   """
   Provides simple serialization to a dictionary based on the assumption that
@@ -99,7 +103,8 @@ class Configuration(ConfigObject):
                literal_comment_pattern=None,
                fence_pattern=None,
                ruler_pattern=None,
-               **_):
+               ignore_directories=None,
+               ** _):
 
     self.line_width = line_width
     self.tab_size = tab_size
@@ -163,6 +168,8 @@ class Configuration(ConfigObject):
     # formatting and the only thing we have accessible through the whole format
     # stack is this config object... so I'm abusing it by adding this field here
     self.first_token = None
+
+    self.ignore_directories = get_default(ignore_directories, None)
 
   def clone(self):
     """
@@ -229,6 +236,8 @@ VARDOCS = {
     "ruler_pattern":
     ("Regular expression to match rulers in comments default=r'{}'"
      .format(DEFAULT_RULER_PATTERN)),
+    "ignore_directories":
+    "list of directories which will be ignore during parsing, use ':' as separator directory",
     "additional_commands":
     "Specify structure for custom cmake functions"
 }

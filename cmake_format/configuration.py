@@ -31,8 +31,8 @@ def parse_bool(string):
   return False
 
 
-def parse_as_list(string, sepr=":"):
-  return list(string.split(sepr))
+def parse_as_list(string, separator=":"):
+  return list(string.split(separator))
 
 
 class ConfigObject(object):
@@ -237,7 +237,7 @@ VARDOCS = {
     ("Regular expression to match rulers in comments default=r'{}'"
      .format(DEFAULT_RULER_PATTERN)),
     "ignore_directories":
-    "list of directories which will be ignore during parsing, use ':' as separator directory",
+    "list of directories which will be ignored during parsing, use ':' as separator directory",
     "additional_commands":
     "Specify structure for custom cmake functions"
 }

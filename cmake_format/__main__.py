@@ -172,7 +172,7 @@ def dump_config(args, config_dict, outfile):
 
   for key, value in vars(args).items():
     if (key in configuration.Configuration.get_field_names()
-            and value is not None):
+        and value is not None):
       config_dict[key] = value
 
   cfg = configuration.Configuration(**config_dict)
@@ -247,7 +247,7 @@ def main():
                           'Default is stdout.')
 
   mutex.add_argument('-f', '--folder-path', default=None,
-                     help='Folder where should format cmake files.')
+                     help='Directory where cmake files should be formatted.')
 
   mutex.add_argument('--dump', choices=['lex', 'parse', 'layout'],
                      default=None)
